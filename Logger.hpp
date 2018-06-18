@@ -2,9 +2,6 @@
 // Created by yalavrinenko on 13.04.18.
 //
 
-#ifndef TAU_LOGGER_H
-#define TAU_LOGGER_H
-
 #ifndef LOGGER_HPP_
 #define LOGGER_HPP_
 
@@ -12,7 +9,6 @@
 #include <iostream>
 #include <fstream>
 #include <mutex>
-
 std::mutex& io_lock();
 
 class Logger{
@@ -114,7 +110,5 @@ public:
 private:
     std::string old_func;
 };
-
 #endif
 
-#endif //TAU_LOGGER_H
