@@ -13,10 +13,10 @@ std::mutex& io_lock();
 
 class Logger{
 private:
-    static std::string m_ModuleName;
-    static bool isSuppressed;
+    thread_local static std::string m_ModuleName;
+    thread_local static bool isSuppressed;
 
-    static std::ofstream file_out;
+    thread_local static std::ofstream file_out;
 
     static void f_out(std::ofstream& out){
         out << std::endl;
@@ -99,7 +99,7 @@ public:
 
 class LoggerGuard{
 public:
-    LoggerGuard(std::string const& func_name){
+    explicit LoggerGuard(std::string const& func_name){
         old_func = Logger::ModuleName();
         Logger::ModuleName(func_name);
     }

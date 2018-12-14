@@ -10,7 +10,7 @@ std::mutex& io_lock(){
     return _mut;
 }
 
-std::string Logger::m_ModuleName="OUT";
-bool Logger::isSuppressed = false;
+thread_local std::string Logger::m_ModuleName{"OUT"};
+thread_local bool Logger::isSuppressed = false;
 
-std::ofstream Logger::file_out;
+thread_local std::ofstream Logger::file_out;
